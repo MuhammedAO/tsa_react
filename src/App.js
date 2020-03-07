@@ -1,9 +1,12 @@
 import React from 'react';
-import './App.css';
+import CountDown from './components/CountDown';
+
 
 function App() {
   return (
-    <h1>Welcome to react</h1>
+    <React.Fragment>
+    <CountDown/>
+    </React.Fragment>
   );
 }
 
