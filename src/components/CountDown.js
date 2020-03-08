@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import moment from 'moment'
 import React from 'react'
+import Controls from './Controls'
 
 class CountDown extends React.Component {
   state ={
-    duration:this.getRemainingTime()
+    duration:this.getRemainingTime(),
+    paused:false
   }
 
   componentDidMount(){
@@ -36,9 +38,9 @@ class CountDown extends React.Component {
 
   render() {
     const duration = this.state.duration
-    
+
     return (
-    <section className="hero is-info is-bold is-fullheight has-text-centered">
+    <section className="hero is-dark is-bold is-fullheight has-text-centered">
       <div className="hero-body">
         <div className="container">
           <h1 className="title">
@@ -73,6 +75,7 @@ class CountDown extends React.Component {
               </div>
             </nav>
           </div>
+          <Controls paused={this.state.paused}/>
         </div>
       </div>
     </section>
