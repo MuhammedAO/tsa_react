@@ -7,14 +7,28 @@ class CountDown extends React.Component {
     duration:this.getRemainingTime()
   }
 
+  componentDidMount(){
+    this.interval = setInterval(() => {
+      this.setState({
+        duration: this.getRemainingTime()
+      })
+    }, 1000)
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval)
+  }
+
   getRemainingTime(){
     //current date
     let now = moment(),
     //year
     year = moment({year: now.year() + 1}),
+    
     //difference between the 2
     diff = year.diff(now)
 
+    //return duration of the difference
     return moment.duration(diff);
     
   } 
@@ -22,12 +36,13 @@ class CountDown extends React.Component {
 
   render() {
     const duration = this.state.duration
+    
     return (
     <section className="hero is-info is-bold is-fullheight has-text-centered">
       <div className="hero-body">
         <div className="container">
           <h1 className="title">
-            Judgment Day is coming
+            Judgment Day is coming!
             </h1>
            
           <div className="section">
